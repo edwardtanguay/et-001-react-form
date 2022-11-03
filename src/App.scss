@@ -7,4 +7,86 @@ body {
 	h1 {
 		color: rgb(209, 168, 85);
 	}
+
+	section {
+		display: flex;
+
+		form {
+			fieldset {
+				margin: 2em 2em 2em 0;
+				padding: 1.5em 2em 2em 2em;
+				border: solid 1px #ccc;
+				border-radius: 6px;
+				width: 20rem;
+				min-width: 200px;
+				background-color: #2a2a2a;
+
+				legend {
+					padding: 0 .25em;
+					color: rgb(200, 169, 110) !important;
+				}
+
+				label {
+					display: block;
+					margin-bottom: .3rem;
+
+					&::after {
+						content: ':';
+					}
+				}
+
+				input {
+					padding: .5em;
+					border: 1px solid #999;
+					width: 96%;
+					margin-bottom: .5rem;
+				}
+
+				textarea {
+					width: 98%;
+					height: 6rem;
+				}
+
+				.buttonArea {
+					display: flex;
+					justify-content: space-between;
+
+					button {
+						margin-top: 1rem;
+						font-size: 1rem;
+						padding: .3rem;
+						display: flex;
+						align-items: center;
+					}
+
+					.preview {
+						display: flex;
+						align-items: center;
+
+						.previewFileName {
+							margin-top: .8rem;
+							font-size: 1.3rem;
+						}
+					}
+				}
+
+			}
+		}
+
+		div.debuggingArea {
+			margin-top: 2.5rem;
+			background-color: black;
+			border: 1px solid #444;
+			border-radius: .5rem;
+			padding: 1rem;
+			width: 40rem;
+
+			pre {
+				font-family: 'Courier New', Courier, monospace;
+				white-space: pre-wrap;   
+				color: #999;
+				font-size: .9rem;
+			}
+		}
+	}
 }
