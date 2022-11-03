@@ -21,6 +21,10 @@ body {
 				min-width: 200px;
 				background-color: #2a2a2a;
 
+				.row:not(:first-of-type) {
+					margin-top: 1rem;
+				}
+
 				legend {
 					padding: 0 .25em;
 					color: rgb(200, 169, 110) !important;
@@ -35,7 +39,7 @@ body {
 					}
 				}
 
-				input {
+				input[type=text] {
 					padding: .5em;
 					border: 1px solid #999;
 					width: 96%;
@@ -83,7 +87,7 @@ body {
 
 			pre {
 				font-family: 'Courier New', Courier, monospace;
-				white-space: pre-wrap;   
+				white-space: pre-wrap;
 				color: #999;
 				font-size: .9rem;
 			}
