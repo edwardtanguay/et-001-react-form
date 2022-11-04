@@ -1,12 +1,15 @@
 @url = http://localhost:5556
 
 ### GET JOBS
-{{url}}/jobs
+GET {{url}}/jobs
 
 ### ADD JOBS
 POST {{url}}/jobs
 content-type: application/json
 
 {
-	"jobTitle": "nnnnnn"
+	"jobTitle": "Rust Developer"
 }
+
+### DELETE JOB
+DELETE {{url}}/jobs/5
