@@ -16,6 +16,7 @@ interface IJob {
 	fullTime: boolean;
 	salary: number;
 	postingDate: string;
+	rank: number;
 }
 
 const _formData: IJob = {
@@ -27,6 +28,7 @@ const _formData: IJob = {
 	fullTime: false,
 	salary: 0,
 	postingDate: '',
+	rank: 5,
 };
 
 function App() {
@@ -93,6 +95,9 @@ function App() {
 					if (!isNaN(salaryAsNumber)) {
 						formData.salary = salaryAsNumber;
 					}
+					break;
+				case 'rank':
+					formData.rank = (value/10);
 					break;
 			}
 		}
@@ -165,7 +170,7 @@ function App() {
 										className="checkboxLabel"
 										htmlFor="remote"
 									>
-									remote
+										remote
 									</label>
 								</div>
 								<div className="checkboxItem">
@@ -215,6 +220,21 @@ function App() {
 											date,
 											'postingDate'
 										)
+									}
+								/>
+							</div>
+						</div>
+
+						<div className="row rowRank">
+							<label>Ranking from 0 to 10</label>
+							<div>
+								<input
+									type="range"
+									min="0"
+									max="100"
+									value={formData.rank * 10}
+									onChange={(e) =>
+										handleChangeFormField(e, 'rank')
 									}
 								/>
 							</div>
