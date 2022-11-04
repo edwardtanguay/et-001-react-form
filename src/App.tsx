@@ -151,9 +151,12 @@ function App() {
 					</fieldset>
 				</form>
 				{isDebugging && (
+					<>
 					<div className="debuggingArea">
+					<h3>Debugging Panel:</h3>
 						<pre>{JSON.stringify(formData, null, 2)}</pre>
 					</div>
+					</>
 				)}
 			</section>
 		</div>
