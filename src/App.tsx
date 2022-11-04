@@ -22,7 +22,7 @@ const _formData: IJob = {
 	id: 0,
 	jobTitle: '',
 	description: '',
-	location: 'hamburg',
+	location: '',
 	remote: false,
 	fullTime: false,
 	salary: 0,
@@ -141,6 +141,7 @@ function App() {
 										handleChangeFormField(e, 'location')
 									}
 								>
+									<option value="">please select</option>
 									<option value="berlin">Berlin</option>
 									<option value="hamburg">Hamburg</option>
 									<option value="leipzig">Leipzig</option>
