@@ -49,6 +49,11 @@ body {
 					}
 				}
 
+				.rowCountryCityArea {
+					display: flex;
+					gap: 1rem;
+				}
+
 				.rowRank {
 					div {
 						input {

@@ -11,7 +11,8 @@ interface IJob {
 	id: number;
 	jobTitle: string;
 	description: string;
-	location: string;
+	country: string;
+	city: string;
 	remote: boolean;
 	fullTime: boolean;
 	salary: number;
@@ -23,7 +24,8 @@ const _formData: IJob = {
 	id: 0,
 	jobTitle: '',
 	description: '',
-	location: '',
+	country: '',
+	city: '',
 	remote: false,
 	fullTime: false,
 	salary: 0,
@@ -71,7 +73,8 @@ function App() {
 				case 'jobTitle':
 					if (value === '/rb') {
 						formData.jobTitle = 'React Developer Job';
-						formData.location = 'berlin';
+						formData.country = 'germany';
+						formData.city = 'berlin';
 						formData.remote = true;
 					} else {
 						formData.jobTitle = value;
@@ -80,8 +83,12 @@ function App() {
 				case 'description':
 					formData.description = value;
 					break;
-				case 'location':
-					formData.location = value;
+				case 'country':
+					formData.country = value;
+					formData.city = '';
+					break;
+				case 'city':
+					formData.city = value;
 					break;
 				case 'remote':
 					formData.remote = checked;
@@ -97,7 +104,7 @@ function App() {
 					}
 					break;
 				case 'rank':
-					formData.rank = (value/10);
+					formData.rank = value / 10;
 					break;
 			}
 		}
@@ -137,21 +144,66 @@ function App() {
 							</div>
 						</div>
 
-						<div className="row">
-							<label>Location</label>
+						<div className="row rowCountryCityArea">
 							<div>
-								<select
-									value={formData.location}
-									onChange={(e) =>
-										handleChangeFormField(e, 'location')
-									}
-								>
-									<option value="">please select</option>
-									<option value="berlin">Berlin</option>
-									<option value="hamburg">Hamburg</option>
-									<option value="leipzig">Leipzig</option>
-								</select>
+								<label>Country</label>
+								<div>
+									<select
+										value={formData.country}
+										onChange={(e) =>
+											handleChangeFormField(e, 'country')
+										}
+									>
+										<option value="">please select</option>
+										<option value="france">France</option>
+										<option value="germany">Germany</option>
+									</select>
+								</div>
 							</div>
+
+							{formData.country != '' && (
+								<div>
+									<label>City</label>
+									<div>
+										<select
+											value={formData.city}
+											onChange={(e) =>
+												handleChangeFormField(e, 'city')
+											}
+										>
+											<option value="">
+												please select
+											</option>
+											{formData.country === 'france' && (
+												<>
+													<option value="paris">
+														Paris
+													</option>
+													<option value="bordeux">
+														Bordeaux
+													</option>
+													<option value="marseilles">
+														Marseilles
+													</option>
+												</>
+											)}
+											{formData.country === 'germany' && (
+												<>
+													<option value="berlin">
+														Berlin
+													</option>
+													<option value="hamburg">
+														Hamburg
+													</option>
+													<option value="leipzig">
+														Leipzig
+													</option>
+												</>
+											)}
+										</select>
+									</div>
+								</div>
+							)}
 						</div>
 
 						<div className="row">
@@ -226,7 +278,7 @@ function App() {
 						</div>
 
 						<div className="row rowRank">
-							<label>Ranking from 0 to 10</label>
+							<label>Rank (0-10)</label>
 							<div>
 								<input
 									type="range"
