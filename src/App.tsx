@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import './App.scss';
-import jobs from './data/jobs.json';
+import axios from 'axios';
 
 const isDebugging = true;
+const apiUrl = 'http://localhost:5556';
 
 interface IJob {
 	jobTitle: string;
@@ -24,6 +25,13 @@ const _formData: IJob = {
 
 function App() {
 	const [formData, setFormData] = useState<IJob>(_formData);
+	const [jobs, setJobs] = useState<IJob[]>([]);
+
+	useEffect(() => {
+		(async () => {
+			setJobs((await axios.get(`${apiUrl}/jobs`)).data);
+		})();
+	}, []);
 
 	const handleChangeFormField = (e: any, fieldName: string) => {
 		const value = e.target.value;
@@ -166,9 +174,9 @@ function App() {
 					<div className="jobs">
 						<h3>Jobs</h3>
 						<ul>
-						{jobs.map((job:IJob) => {
-							return <li>{job.jobTitle}</li>;
-						})}
+							{jobs.map((job: IJob) => {
+								return <li>{job.jobTitle}</li>;
+							})}
 						</ul>
 					</div>
 				</aside>
