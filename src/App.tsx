@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
 import './App.scss';
 import axios from 'axios';
+import DatePicker from 'react-datepicker';
+import 'react-datepicker/dist/react-datepicker.css';
 
 const isDebugging = true;
 const apiUrl = 'http://localhost:5556';
@@ -13,6 +15,7 @@ interface IJob {
 	remote: boolean;
 	fullTime: boolean;
 	salary: number;
+	postingDate: string;
 }
 
 const _formData: IJob = {
@@ -23,6 +26,7 @@ const _formData: IJob = {
 	remote: false,
 	fullTime: false,
 	salary: 0,
+	postingDate: '',
 };
 
 function App() {
@@ -52,38 +56,45 @@ function App() {
 		}
 	};
 
-	const handleChangeFormField = (e: any, fieldName: string) => {
-		const value = e.target.value;
-		const checked = e.target.checked;
-		switch (fieldName) {
-			case 'jobTitle':
-				if (value === '/rb') {
-					formData.jobTitle = 'React Developer Job';
-					formData.location = 'berlin';
-					formData.remote = true;
-				} else {
-					formData.jobTitle = value;
-				}
-				break;
-			case 'description':
-				formData.description = value;
-				break;
-			case 'location':
-				formData.location = value;
-				break;
-			case 'remote':
-				formData.remote = checked;
-				break;
-			case 'fullTime':
-				formData.fullTime = checked;
-				break;
-			case 'salary':
-				const salaryAsNumber = Number(value);
-				console.log(salaryAsNumber);
-				if (!isNaN(salaryAsNumber)) {
-					formData.salary = salaryAsNumber;
-				}
-				break;
+	const handleChangeFormField = (obj: any, fieldName: string) => {
+		if (fieldName === 'postingDate') {
+			const chosenDate = obj;
+			const chosenDateIso = chosenDate.toISOString().split('T')[0]; 
+			formData.postingDate = chosenDateIso;
+		} else {
+			const e = obj;
+			const value = e.target.value;
+			const checked = e.target.checked;
+			switch (fieldName) {
+				case 'jobTitle':
+					if (value === '/rb') {
+						formData.jobTitle = 'React Developer Job';
+						formData.location = 'berlin';
+						formData.remote = true;
+					} else {
+						formData.jobTitle = value;
+					}
+					break;
+				case 'description':
+					formData.description = value;
+					break;
+				case 'location':
+					formData.location = value;
+					break;
+				case 'remote':
+					formData.remote = checked;
+					break;
+				case 'fullTime':
+					formData.fullTime = checked;
+					break;
+				case 'salary':
+					const salaryAsNumber = Number(value);
+					console.log(salaryAsNumber);
+					if (!isNaN(salaryAsNumber)) {
+						formData.salary = salaryAsNumber;
+					}
+					break;
+			}
 		}
 		setFormData({ ...formData });
 	};
@@ -163,7 +174,7 @@ function App() {
 							</div>
 						</div>
 
-						<div className="row">
+						<div className="row rowWholeNumber">
 							<label>Monthly Salary in Euros</label>
 							<div>
 								<input
@@ -175,6 +186,22 @@ function App() {
 									type="text"
 									onChange={(e) =>
 										handleChangeFormField(e, 'salary')
+									}
+								/>
+							</div>
+						</div>
+
+						<div className="row rowDate">
+							<label>Job Posting Date</label>
+							<div>
+								<DatePicker
+									value={formData.postingDate}
+									selected={new Date()}
+									onChange={(date: Date) =>
+										handleChangeFormField(
+											date,
+											'postingDate'
+										)
 									}
 								/>
 							</div>

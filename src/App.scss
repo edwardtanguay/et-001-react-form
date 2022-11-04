@@ -25,6 +25,23 @@ body {
 					margin-top: 1rem;
 				}
 
+				.rowWholeNumber {
+					div {
+						input {
+							width: 6rem;
+							text-align: right;
+						}
+					}
+				}
+
+				.rowDate {
+					div {
+						input {
+							width: 6rem;
+						}
+					}
+				}
+
 				legend {
 					padding: 0 .25em;
 					color: rgb(200, 169, 110) !important;
