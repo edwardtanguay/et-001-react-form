@@ -1,22 +1,31 @@
 {
-	"jobs": [
-		{
-			"id": 1,
-			"jobTitle": "React Frontend Developer",
-			"description": "Another React Job in Berlin, and remote.",
-			"location": "berlin",
-			"remote": true,
-			"fullTime": false,
-			"salary": 4100
-		},
-		{
-			"id": 2,
-			"jobTitle": "Angular Fullstack Developer",
-			"description": "Angular Job in Hamburg, not remote.",
-			"location": "hamburg",
-			"remote": false,
-			"fullTime": true,
-			"salary": 4500
-		}
-	]
+  "jobs": [
+    {
+      "id": 1,
+      "jobTitle": "React Frontend Developer",
+      "description": "Another React Job in Berlin, and remote.",
+      "location": "berlin",
+      "remote": true,
+      "fullTime": false,
+      "salary": 4100
+    },
+    {
+      "id": 2,
+      "jobTitle": "Angular Fullstack Developer",
+      "description": "Angular Job in Hamburg, not remote.",
+      "location": "hamburg",
+      "remote": false,
+      "fullTime": true,
+      "salary": 4500
+    },
+    {
+      "id": 3,
+      "jobTitle": "PHP Developer",
+      "description": "sdkjfskdfjsdkfj",
+      "location": "leipzig",
+      "remote": false,
+      "fullTime": true,
+      "salary": 0
+    }
+  ]
 }
