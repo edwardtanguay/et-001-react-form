@@ -1,85 +1,22 @@
 {
-  "jobs": [
-    {
-      "id": 1,
-      "jobTitle": "React Frontend Developer",
-      "description": "Another React Job in Berlin, and remote.",
-      "location": "berlin",
-      "remote": true,
-      "fullTime": false,
-      "salary": 4100
-    },
-    {
-      "id": 2,
-      "jobTitle": "Angular Fullstack Developer",
-      "description": "Angular Job in Hamburg, not remote.",
-      "location": "hamburg",
-      "remote": false,
-      "fullTime": true,
-      "salary": 4500
-    },
-    {
-      "id": 3,
-      "jobTitle": "sdfsdfsdf",
-      "description": "",
-      "location": "hamburg",
-      "remote": false,
-      "fullTime": false,
-      "salary": 0
-    },
-    {
-      "id": 4,
-      "jobTitle": "sdfsdfsdf",
-      "description": "",
-      "location": "hamburg",
-      "remote": false,
-      "fullTime": false,
-      "salary": 0
-    },
-    {
-      "id": 5,
-      "jobTitle": "sdfwefwe",
-      "description": "",
-      "location": "hamburg",
-      "remote": false,
-      "fullTime": false,
-      "salary": 0
-    },
-    {
-      "id": 6,
-      "jobTitle": "3223434",
-      "description": "sdfsdfsd",
-      "location": "leipzig",
-      "remote": false,
-      "fullTime": false,
-      "salary": 0
-    },
-    {
-      "id": 7,
-      "jobTitle": "sdfsdfsdf",
-      "description": "sdfsdf",
-      "location": "hamburg",
-      "remote": false,
-      "fullTime": false,
-      "salary": 0
-    },
-    {
-      "id": 8,
-      "jobTitle": "dfsdfsdfs",
-      "description": "",
-      "location": "hamburg",
-      "remote": false,
-      "fullTime": false,
-      "salary": 0
-    },
-    {
-      "id": 9,
-      "jobTitle": "dfdfdf",
-      "description": "",
-      "location": "hamburg",
-      "remote": false,
-      "fullTime": false,
-      "salary": 0
-    }
-  ]
+	"jobs": [
+		{
+			"id": 1,
+			"jobTitle": "React Frontend Developer",
+			"description": "Another React Job in Berlin, and remote.",
+			"location": "berlin",
+			"remote": true,
+			"fullTime": false,
+			"salary": 4100
+		},
+		{
+			"id": 2,
+			"jobTitle": "Angular Fullstack Developer",
+			"description": "Angular Job in Hamburg, not remote.",
+			"location": "hamburg",
+			"remote": false,
+			"fullTime": true,
+			"salary": 4500
+		}
+	]
 }
