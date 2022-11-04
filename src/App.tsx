@@ -163,14 +163,14 @@ function App() {
 							</div>
 						</>
 					)}
-					<section className="jobs">
+					<div className="jobs">
 						<h3>Jobs</h3>
 						<ul>
 						{jobs.map((job:IJob) => {
 							return <li>{job.jobTitle}</li>;
 						})}
 						</ul>
-					</section>
+					</div>
 				</aside>
 			</section>
 		</div>
