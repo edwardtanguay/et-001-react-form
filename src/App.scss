@@ -21,6 +21,21 @@ body {
 				min-width: 200px;
 				background-color: #2a2a2a;
 
+				.row {
+					.checkboxes {
+						.checkboxItem {
+							label.checkboxLabel {
+								display: inline-block;
+
+								&::after {
+									content: '';
+								}
+								cursor: pointer;
+							}
+						}
+					}
+				}
+
 				.row:not(:first-of-type) {
 					margin-top: 1rem;
 				}

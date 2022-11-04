@@ -59,7 +59,7 @@ function App() {
 	const handleChangeFormField = (obj: any, fieldName: string) => {
 		if (fieldName === 'postingDate') {
 			const chosenDate = obj;
-			const chosenDateIso = chosenDate.toISOString().split('T')[0]; 
+			const chosenDateIso = chosenDate.toISOString().split('T')[0];
 			formData.postingDate = chosenDateIso;
 		} else {
 			const e = obj;
@@ -154,22 +154,34 @@ function App() {
 								<div className="checkboxItem">
 									<input
 										type="checkbox"
+										id="remote"
 										checked={formData.remote}
 										onChange={(e) =>
 											handleChangeFormField(e, 'remote')
 										}
 									/>
+									<label
+										className="checkboxLabel"
+										htmlFor="remote"
+									>
 									remote
+									</label>
 								</div>
 								<div className="checkboxItem">
 									<input
+										id="fullTime"
 										type="checkbox"
 										checked={formData.fullTime}
 										onChange={(e) =>
 											handleChangeFormField(e, 'fullTime')
 										}
 									/>
-									full-time
+									<label
+										className="checkboxLabel"
+										htmlFor="fullTime"
+									>
+										full-time
+									</label>
 								</div>
 							</div>
 						</div>
