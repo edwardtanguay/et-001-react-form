@@ -1,0 +1,18 @@
+[
+	{
+		"jobTitle": "React Frontend Developer",
+		"description": "Another React Job in Berlin, and remote.",
+		"location": "berlin",
+		"remote": true,
+		"fullTime": false,
+		"salary": 4100
+	},
+	{
+		"jobTitle": "Angular Fullstack Developer",
+		"description": "Angular Job in Hamburg, not remote.",
+		"location": "hamburg",
+		"remote": false,
+		"fullTime": true,
+		"salary": 4500
+	}
+]

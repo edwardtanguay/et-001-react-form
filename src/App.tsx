@@ -1,9 +1,10 @@
 import { useState } from 'react';
 import './App.scss';
+import jobs from './data/jobs.json';
 
 const isDebugging = true;
 
-interface IFormData {
+interface IJob {
 	jobTitle: string;
 	description: string;
 	location: string;
@@ -12,17 +13,17 @@ interface IFormData {
 	salary: number;
 }
 
-const _formData: IFormData = {
+const _formData: IJob = {
 	jobTitle: '',
 	description: '',
 	location: 'hamburg',
 	remote: false,
 	fullTime: false,
-	salary: 0
+	salary: 0,
 };
 
 function App() {
-	const [formData, setFormData] = useState<IFormData>(_formData);
+	const [formData, setFormData] = useState<IJob>(_formData);
 
 	const handleChangeFormField = (e: any, fieldName: string) => {
 		const value = e.target.value;
@@ -52,8 +53,8 @@ function App() {
 			case 'salary':
 				const salaryAsNumber = Number(value);
 				console.log(salaryAsNumber);
-				if (!isNaN(salaryAsNumber)){
-					formData.salary = salaryAsNumber; 
+				if (!isNaN(salaryAsNumber)) {
+					formData.salary = salaryAsNumber;
 				}
 				break;
 		}
@@ -63,7 +64,7 @@ function App() {
 	return (
 		<div className="App">
 			<h1>Job Site</h1>
-			<section>
+			<section className="main">
 				<form>
 					<fieldset>
 						<legend>New Job</legend>
@@ -139,7 +140,11 @@ function App() {
 							<label>Monthly Salary in Euros</label>
 							<div>
 								<input
-									value={formData.salary === 0 ? '' : formData.salary.toString()}
+									value={
+										formData.salary === 0
+											? ''
+											: formData.salary.toString()
+									}
 									type="text"
 									onChange={(e) =>
 										handleChangeFormField(e, 'salary')
@@ -147,17 +152,26 @@ function App() {
 								/>
 							</div>
 						</div>
-
 					</fieldset>
 				</form>
-				{isDebugging && (
-					<>
-					<div className="debuggingArea">
-					<h3>Debugging Panel:</h3>
-						<pre>{JSON.stringify(formData, null, 2)}</pre>
-					</div>
-					</>
-				)}
+				<aside className="right">
+					{isDebugging && (
+						<>
+							<div className="debuggingArea">
+								<h3>Debugging Panel:</h3>
+								<pre>{JSON.stringify(formData, null, 2)}</pre>
+							</div>
+						</>
+					)}
+					<section className="jobs">
+						<h3>Jobs</h3>
+						<ul>
+						{jobs.map((job:IJob) => {
+							return <li>{job.jobTitle}</li>;
+						})}
+						</ul>
+					</section>
+				</aside>
 			</section>
 		</div>
 	);
