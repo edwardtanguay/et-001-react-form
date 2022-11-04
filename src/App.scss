@@ -51,9 +51,9 @@ body {
 					height: 6rem;
 				}
 
-				.buttonArea {
+				.buttonRow {
 					display: flex;
-					justify-content: space-between;
+					justify-content: flex-end;
 
 					button {
 						margin-top: 1rem;
@@ -61,16 +61,6 @@ body {
 						padding: .3rem;
 						display: flex;
 						align-items: center;
-					}
-
-					.preview {
-						display: flex;
-						align-items: center;
-
-						.previewFileName {
-							margin-top: .8rem;
-							font-size: 1.3rem;
-						}
 					}
 				}
 

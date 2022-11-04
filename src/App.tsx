@@ -6,6 +6,7 @@ const isDebugging = true;
 const apiUrl = 'http://localhost:5556';
 
 interface IJob {
+	id: number;
 	jobTitle: string;
 	description: string;
 	location: string;
@@ -15,6 +16,7 @@ interface IJob {
 }
 
 const _formData: IJob = {
+	id: 0,
 	jobTitle: '',
 	description: '',
 	location: 'hamburg',
@@ -27,11 +29,28 @@ function App() {
 	const [formData, setFormData] = useState<IJob>(_formData);
 	const [jobs, setJobs] = useState<IJob[]>([]);
 
+	const loadJobs = async () => {
+		const response = await axios.get(`${apiUrl}/jobs`);
+		const _jobs = response.data;
+		setJobs(_jobs);
+	};
+
 	useEffect(() => {
-		(async () => {
-			setJobs((await axios.get(`${apiUrl}/jobs`)).data);
-		})();
+		loadJobs();
 	}, []);
+
+	const handleFormSave = (e: any) => {
+		e.preventDefault();
+		if (formData.jobTitle.trim() !== '') {
+			(async () => {
+				const response = await axios.post(`${apiUrl}/jobs`, formData);
+				//clear, TODO: resolve this issue that jobTitle contains the first letter of past value, e.g. use deepCopy for formData
+				_formData.jobTitle = '';
+				setFormData(_formData);
+				loadJobs();
+			})();
+		}
+	};
 
 	const handleChangeFormField = (e: any, fieldName: string) => {
 		const value = e.target.value;
@@ -160,6 +179,12 @@ function App() {
 								/>
 							</div>
 						</div>
+
+						<div className="buttonRow">
+							<button onClick={(e) => handleFormSave(e)}>
+								Save
+							</button>
+						</div>
 					</fieldset>
 				</form>
 				<aside className="right">
@@ -175,7 +200,7 @@ function App() {
 						<h3>Jobs</h3>
 						<ul>
 							{jobs.map((job: IJob) => {
-								return <li>{job.jobTitle}</li>;
+								return <li key={job.id}>{job.jobTitle}</li>;
 							})}
 						</ul>
 					</div>
